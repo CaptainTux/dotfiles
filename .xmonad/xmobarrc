@@ -1,0 +1,121 @@
+-- xmobar config used by Tux
+-- Author: Tux
+
+-- This xmobar config is for a single 1080p display (1920x1080) and meant to be
+-- used with the stalonetrayrc-single config.
+--
+-- If you're using a single display with a different resolution, adjust the
+-- position argument below using the given calculation.
+Config {
+    -- Position xmobar along the top, with a stalonetray in the top right.
+    -- Add right padding to xmobar to ensure stalonetray and xmobar don't
+    -- overlap. stalonetrayrc-single is configured for 12 icons, each 23px
+    -- wide. 
+    -- right_padding = num_icons * icon_size
+    -- right_padding = 12 * 23 = 276
+    -- Example: position = TopP 0 276
+    position = Top,
+    -- font = "xft:Liberation Mono for Powerline:size=11:style=regular",
+    font = "xft:Roboto Nerd Font Mono:size=11",
+    additionalFonts = [ "xft:FontAwesome:size=11",
+                        "xft:NotoSansDisplay Nerd Font Mono:size=11",
+                        "xft:Liberation Mono for Powerline:size=11:style=regular" ],
+    bgColor = "#282a36",
+    fgColor = "#ECCCFF",
+    overrideRedirect = False,
+    lowerOnStart = False,
+    allDesktops = True,
+    persistent = True,
+    commands = [
+        -- cpu activity monitor
+        Run MultiCpu       [ "--template" , "<fn=2>\xf085</fn> <total0>|<total1>|<total2>|<total3>"
+                             , "--Low"      , "40"         -- units: %
+                             , "--High"     , "80"         -- units: %
+                             , "--low"      , "#00FF88"
+                             , "--normal"   , "#FFF370"
+                             , "--high"     , "#e2371d"
+                             ] 10,
+
+                             -- cpu core temperature monitor
+        Run CoreTemp       [ "--template" , "<core0>:<core2>°C"
+                             , "--Low"      , "45"        -- units: °C
+                             , "--High"     , "70"        -- units: °C
+                             , "--low"      , "#4eed32"
+                             , "--normal"   , "#FFF370"
+                             , "--high"     , "#de935f"
+                             ] 10,
+        -- memory usage monitor
+        Run Memory         [ "--template" ,"<fn=2>\xf2db</fn> <usedratio>%"
+                             ,"-H","80"
+                             ,"-L","10"
+                             , "--low"      , "#00FF88"
+                             , "--normal"   , "#00FF88"
+                             , "--high"     , "#e2371d"
+                             ] 10,
+                             
+        Run Swap ["-t","Swap: <usedratio>%","-H","1024","-L","512","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10,
+        
+        -- network activity monitor (dynamic interface resolution)
+        Run DynNetwork [ "-t","<fc=#4db5bd><fn=1>\xf063</fn></fc> <rx>, <fc=#c678dd><fn=1>\xf064</fn></fc> <tx>" -- "<rx>k/s ↓↑ <tx>k/s"
+                         ,"-H","200"
+                         ,"-L","10"
+                         ,"-h","#bbc2cf"
+                         ,"-l","#bbc2cf"
+                         ,"-n","#bbc2cf"] 10,
+                             
+        Run Date "%I:%M:%S" "date" 10,
+
+        -- wifi, use %wlp4s0wi% to show in bar
+        Run Wireless "wlp4s0" [ "-L",       "-1"
+                              , "-H",       "100"
+                              , "--normal", "#f6f6c9"
+                              , "-m",       "3"
+                              , "-t",       "<essid>:<quality> <fn=2>"
+                              , "-x",       ""
+                              ] 100,
+
+        -- network traffic, aliases to %wlp4s0%
+        Run Network "wlp4s0" [ "-L",       "-1"
+                             , "-H",       "-1" -- units in bytes
+                             , "--high",   "#f6f6c9"
+                             -- , "-m",       "7"
+                             -- , "-S",       "True"
+                             , "-t",       "<fn=2>\xf104</fn> <rx> / <tx> <fn=2>\xf105</fn>"
+                             , "-x",       "<fn=2>\xf053</fn>/<fn=2>\xf054</fn>"] 10,
+        
+        -- battery monitor
+        Run BatteryN   ["BAT0"]
+                       [ "--template", "<fn=2>\xf8a0</fn> <acstatus>"
+                       , "--Low"       , "10"    -- units: %
+                       , "--High"      , "60"    -- units: %
+                       , "--" -- battery specific options
+                       , "-o" , "<left>% (<timeleft>)"
+                       , "-O" , "AC <left>%"
+                       , "-i" , "<left>%"
+                       ] 50 "B0",
+        Run BatteryN   ["BAT1"]
+                       [ "--template", "<fn=2>\xf8a3</fn> <acstatus>"
+                       , "--Low"       , "10"    -- units: %
+                       , "--High"      , "60"    -- units: %
+                       , "--" -- battery specific options
+                       , "-o" , "<left>% (<timeleft>)"
+                       , "-O" , "AC <left>%"
+                       , "-i" , "<left>%"
+                       ] 50 "B1",
+
+        -- Run Locks
+
+        -- Volume indicator
+        Run Volume "default" "Master" [ "-t", "<fn=2>\xe62b</fn> <volume>%"
+                                                  , "--"
+                                                  , "-o", "\xf026"
+                                                  , "-O", "\xf028"
+                                                  , "-C", "grey"
+                                                  , "-c", "#666666"
+                                                  ] 2,
+        Run StdinReader
+    ]
+    , sepChar = "%"
+    , alignSep = "}{"
+    , template = "<fn=3>%StdinReader%</fn> }{ %multicpu% | %memory% | %wlp4s0% | %default:Master% | %B0% | %B1% | %date%"
+}

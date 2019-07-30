@@ -1,0 +1,7 @@
+alias ls='exa'
+alias la='ls -a'
+alias ll='ls -la'
+alias l='ls'
+alias l.="ls -a | egrep '^\.'"
+alias mirrors='sudo reflector --latest 200 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+alias venv='python3.7 -m venv'
