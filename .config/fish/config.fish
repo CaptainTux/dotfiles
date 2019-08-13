@@ -8,3 +8,5 @@ end
 fzf_key_bindings
 
 alias ls="exa"
+
+source ~/.config/fish/start_ssh_agent.fish
