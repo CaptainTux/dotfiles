@@ -75,6 +75,7 @@ myStartupHook = do
           spawn "xinput set-prop 11 300 1 &"
           spawn "ibus-daemon &"
           spawn "owncloud &"
+          spawn "keepassxc"
           -- spawn "shutdown -P 22:30 &"
           spawn "xss-lock -- i3lock -n -f -i ~/.lock.png &"  -- i am root lockscreen
           setWMName "LG3D"
@@ -265,6 +266,7 @@ myManageHook = composeAll $ [
   className =? "firefox"       --> doF (W.shift "δ")
   , className =? "Emacs"         --> doF (W.shift "α")
   , className =? "qpdfview"      --> doF (W.shift "γ")
+  , className =? "keepassxc"         --> doF (W.shift "ε")
   , isFullscreen                 --> doFloat
   ]
 --  where
