@@ -57,6 +57,8 @@
   (when (string= (file-name-extension buffer-file-name) ".tex")
     (load-file "~/.emacs.d/LaTeX.el")))
 
+(add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
+
 
 ;; (set-frame-font "DejaVu Sans Mono-14" nil t)
 
