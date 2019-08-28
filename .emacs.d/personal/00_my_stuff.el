@@ -6,7 +6,9 @@
 
 ;;; Code:
 
-(require 'package)
+(load-theme 'pink_2 t)
+
+;; (require 'package)
 
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
@@ -20,10 +22,10 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-(require 'multiple-cursors)
+;; (require 'multiple-cursors)
 
 
-(package-initialize)
+;; (package-initialize)
 
 ;; (use-package benchmark-init
 ;;   :ensure t
@@ -49,13 +51,6 @@
 
 ;; auto close bracket insertion. New in emacs 24
 ;; (electric-pair-mode 1)
-
-(load-theme 'pink_2 t)
-
-(add-hook 'find-file-hook 'my-project-hook)
-(defun my-project-hook ()
-  (when (string= (file-name-extension buffer-file-name) ".tex")
-    (load-file "~/.emacs.d/LaTeX.el")))
 
 (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
 

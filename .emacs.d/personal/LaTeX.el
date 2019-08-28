@@ -10,7 +10,9 @@
 (load "auctex.el" nil t t)
 ;; (load "preview-latex.el" nil t t)
 
-(pdf-tools-install)
+(add-hook 'doc-view-mode-hook 'pdf-tools-install) 
+
+;; (pdf-tools-install)
 
 ;; (require 'company-auctex)
 ;; (company-auctex-init)
@@ -37,7 +39,7 @@
 
 (custom-set-variables '(LaTeX-command "latex -synctex=1") )
 
-;; (setq TeX-source-correlate-mode t)
+(setq TeX-source-correlate-mode t)
 
 ;; (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
 
