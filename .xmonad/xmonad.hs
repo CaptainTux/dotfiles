@@ -77,7 +77,6 @@ myStartupHook = do
           spawn "owncloud &"
           spawn "keepassxc"
           -- spawn "shutdown -P 22:30 &"
-          spawn "xss-lock -- i3lock -n -f -i ~/.lock.png &"  -- i am root lockscreen
           setWMName "LG3D"
 
 

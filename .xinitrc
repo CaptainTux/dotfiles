@@ -20,9 +20,12 @@ fi
 
 # this must be before the 'exec' command
 # it sources ~/.xprofile for additional settings
-[ -f ~/.xprofile ] && . ~/.xprofile
+[ -f ~/.xprofile ] && ~/.xprofile
 
 [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+
+# i am root lockscreen
+xss-lock -l -- i3lock -n -f -i ~/.lock.png &
 
 # start the session
 # case $session in
@@ -45,9 +48,9 @@ fi
 #         exec $1
 #         ;;
 
-exec xmonad
-
 wmname LG3D
+
+exec xmonad
 
 
 # esac
