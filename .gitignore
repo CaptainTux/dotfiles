@@ -190,3 +190,5 @@ RAMDisk/
 offsec_misc_projects/
 .config/Dharkael/
 FKIE
+.password-store/
+react-doc/
