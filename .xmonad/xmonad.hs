@@ -113,16 +113,19 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_e     ), spawn "emacs")
 
     -- launch file manager - vifm
-    , ((modm,               xK_f     ), spawn "termite -e vifm")
+    -- , ((modm,               xK_f     ), spawn "termite -e vifm")
 
     -- launch network manager 
     , ((modm,               xK_n     ), spawn "networkmanager_dmenu")
 
     -- launch dmenu
-    , ((modm,               xK_p     ), spawn "dmenu_run -fn 'UbuntuMono Nerd Font:size=12' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -p 'dmenu:'")
+    , ((modm .|. shiftMask, xK_p     ), spawn "dmenu_run -fn 'UbuntuMono Nerd Font:size=12' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -p 'dmenu:'")
 
-    -- launch gmrun
-    , ((modm .|. shiftMask, xK_p     ), spawn "rofi -show run")
+    -- launch rofi
+    , ((modm,               xK_p     ), spawn "rofi -show run")
+
+    -- launch rofi-pass
+    , ((modm .|. shiftMask, xK_u     ), spawn "rofi-pass")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
