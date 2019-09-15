@@ -33,7 +33,6 @@ zstyle ':prezto:load' pmodule \
   'history' \
   'directory' \
   'spectrum' \
-  'utility' \
   'autosuggestions' \
   'completion' \
   'python' \
@@ -42,6 +41,7 @@ zstyle ':prezto:load' pmodule \
   'ssh' \
   'syntax-highlighting' \
   'history-substring-search' \
+  'utility' \
   'prompt'
 #
 # Autosuggestions
@@ -236,4 +236,4 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 # Enabled safe options. This aliases cp, ln, mv and rm so that they prompt
 # before deleting or overwriting files. Set to 'no' to disable this safer
 # behavior.
-zstyle ':prezto:module:utility' safe-ops 'yes'
+zstyle ':prezto:module:utility' safe-ops 'no'

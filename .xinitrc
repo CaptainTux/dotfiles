@@ -13,7 +13,7 @@
 # source files in /etc/X11/xinit/xinitrc.d
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
     for f in /etc/X11/xinit/xinitrc.d/*; do
-        [ -x "$f" ] && . "$f"
+        [ -x "$f" ] && "$f"
     done
     unset f
 fi
@@ -22,7 +22,7 @@ fi
 # it sources ~/.xprofile for additional settings
 [ -f ~/.xprofile ] && ~/.xprofile
 
-[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 
 # i am root lockscreen
 xss-lock -l -- i3lock -n -f -i ~/.lock.png &
