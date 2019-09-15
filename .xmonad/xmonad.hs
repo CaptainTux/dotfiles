@@ -265,6 +265,7 @@ data LibNotifyUrgencyHook = LibNotifyUrgencyHook deriving (Read, Show)
 myManageHook = composeAll $ [
 --   isNotification --> doIgnore
   className =? "firefox"       --> doF (W.shift "δ")
+  , className =? "discord"       --> doF (W.shift "ε")
   , className =? "Emacs"         --> doF (W.shift "α")
   , className =? "qpdfview"      --> doF (W.shift "γ")
   , isFullscreen                 --> doFloat
