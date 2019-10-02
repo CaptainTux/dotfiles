@@ -15,35 +15,33 @@
 ;; (pdf-tools-install)
 
 ;; (require 'company-auctex)
-;; (company-auctex-init)
+(company-auctex-init)
 
+(setq TeX-default-mode 'latex-mode)
 
 ;; (add-hook 'LaTeX-mode-hook #'latex-extra-mode)
 
-;; Use pdf-tools to open PDF files
-(setq TeX-view-program-selection '((output-pdf "PDF Tools"))
-      TeX-source-correlate-start-server t)
-
+(custom-set-variables '(LaTeX-command "latex -synctex=1") )
 
 ;; Use pdf-tools to open PDF files
 (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
       TeX-source-correlate-start-server t)
 
-;; Update PDF buffers after successful LaTeX runs
-(add-hook 'TeX-after-compilation-finished-functions
-          #'TeX-revert-document-buffer)
-
+(setq TeX-source-correlate-mode t)
+(setq TeX-parse-self t)
 (setq TeX-auto-save t)
 
 ;; (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)   ; with AUCTeX LaTeX mode
 
-(custom-set-variables '(LaTeX-command "latex -synctex=1") )
+(add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
 
-(setq TeX-source-correlate-mode t)
+(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
 
-;; (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+(add-hook 'LaTeX-mode-hook #'LaTeX-preview-setup)
 
-;; (add-hook 'LaTeX-mode-hook #'LaTeX-preview-setup)
+;; Update PDF buffers after successful LaTeX runs
+(add-hook 'TeX-after-compilation-finished-functions
+          #'TeX-revert-document-buffer)
 
 
 ;;; LaTeX.el ends here
