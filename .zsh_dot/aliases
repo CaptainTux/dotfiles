@@ -5,3 +5,4 @@ alias l='ls'
 alias l.="ls -a | egrep '^\.'"
 alias mirrors='sudo reflector --latest 200 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias venv='python3.7 -m venv'
+alias unitunnel='sshuttle 131.220.0.0/16 -r kroemer@zeus.cs.uni-bonn.de'
