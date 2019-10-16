@@ -122,7 +122,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_p     ), spawn "dmenu_run -fn 'UbuntuMono Nerd Font:size=12' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -p 'dmenu:'")
 
     -- launch rofi
-    , ((modm,               xK_p     ), spawn "rofi -show run")
+    , ((modm,               xK_p     ), spawn "rofi -modi window,run,ssh,combi -show combi")
 
     -- launch rofi-pass
     , ((modm .|. shiftMask, xK_u     ), spawn "rofi-pass")
