@@ -6,7 +6,7 @@
 
 ;;; Code:
 
-(load-theme 'pink_2 t)
+;; (load-theme 'pink_2 t)
 
 ;; (require 'package)
 
@@ -19,8 +19,8 @@
 ;;   (package-install 'use-package))
 
 
-(require 'use-package)
-(setq use-package-always-ensure t)
+;; (require 'use-package)
+;; (setq use-package-always-ensure t)
 
 ;; (require 'multiple-cursors)
 
@@ -52,7 +52,14 @@
 ;; auto close bracket insertion. New in emacs 24
 ;; (electric-pair-mode 1)
 
-(add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
+;; jsx mode for react development
+;; (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
+
+
+(add-hook 'after-make-frame-functions
+          (lambda (frame)
+            (with-selected-frame frame
+              (load-theme 'dracula_2 t))))
 
 
 ;; (set-frame-font "DejaVu Sans Mono-14" nil t)
