@@ -75,7 +75,7 @@ myStartupHook = do
           spawn "xinput set-prop 11 300 1 &"
           spawn "ibus-daemon &"
           spawn "owncloud &"
-          -- spawn "shutdown -P 22:30 &"
+          spawn "shutdown -P 22:30 &"
           setWMName "LG3D"
 
 
