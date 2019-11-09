@@ -43,5 +43,4 @@
 (add-hook 'TeX-after-compilation-finished-functions
           #'TeX-revert-document-buffer)
 
-
 ;;; LaTeX.el ends here
