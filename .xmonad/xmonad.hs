@@ -72,10 +72,10 @@ myStartupHook = do
           -- spawn "hsetroot -fill ~/.wallpaper.png -tint \\#cf4f7f &"  -- semicolon wallpaper
           -- spawn "hs-notifications"
           spawn "hsetroot -fill ~/.wallpaper.jpg -tint \\#5f4e6e &"  -- i love linux wallpaper
-          spawn "xinput set-prop 11 300 1 &"
+          spawn "xinput --set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1 &"
           spawn "ibus-daemon &"
           spawn "owncloud &"
-          spawn "shutdown -P 22:30 &"
+          -- spawn "shutdown -P 22:30 &"
           setWMName "LG3D"
 
 
