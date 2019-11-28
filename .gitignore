@@ -12,6 +12,7 @@
 .config/QtProject.conf
 .config/Sabaki/
 .config/Signal/
+.config/SweetScape/
 .config/Thunar/
 .config/autostart/
 .config/balena-etcher-electron/
@@ -56,7 +57,6 @@
 .emacs.d/vendor/
 .esd_auth
 .gdb_history
-.gitconfig
 .gnupg/
 .gtk-bookmarks
 .hplip/
@@ -81,7 +81,7 @@
 .telegram-cli/
 .thumbnails/
 .thunderbird/
-.tor-browser-en-us/
+.tor-browser/
 .viminfo
 .vscode-cpptools/
 .vscode-oss/
@@ -95,17 +95,16 @@
 .zcompdump
 .zhistory
 .zprezto/
-Cockpit/
+Documents/
+Downloads/
 FKIE
 Go_stuff
 KeePassX/
 LARBS/
 MathWorld
-RAMDisk/
 WS1920
 ownCloud/
 static-code-analyzer/
 xmobar/
-Downloads/
-.config/SweetScape/
-Documents/
+tmp
+.gitconfig

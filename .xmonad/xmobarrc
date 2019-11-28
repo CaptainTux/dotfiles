@@ -45,7 +45,7 @@ Config {
                              , "--low"      , "#00FF88"
                              , "--normal"   , "#FFF370"
                              , "--high"     , "#e2371d"
-                             ] 10
+                             ] 15
 
         -- cpu core temperature monitor
         , Run CoreTemp       [ "--template" , "<core0>:<core2>°C"
@@ -54,7 +54,7 @@ Config {
                              , "--low"      , "#4eed32"
                              , "--normal"   , "#FFF370"
                              , "--high"     , "#de935f"
-                             ] 10
+                             ] 15
                              
         -- memory usage monitor
         , Run Memory         [ "--template" , "<fn=2>\xf2db</fn> <usedratio>%"
@@ -63,7 +63,7 @@ Config {
                              , "--low"      , "#00FF88"
                              , "--normal"   , "#00FF88"
                              , "--high"     , "#e2371d"
-                             ] 10
+                             ] 30
                              
         -- , Run Swap ["-t","Swap: <usedratio>%","-H","1024","-L","512","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10
         
@@ -106,7 +106,7 @@ Config {
                        , "-o" , "<left>% (<timeleft>)"
                        , "-O" , "AC <left>%"
                        , "-i" , "<left>%"
-                       ] 50 "B0"
+                       ] 60 "B0"
                        
         , Run BatteryN   ["BAT1"]
                          [ "--template", "<fn=2>\xf8a3</fn> <acstatus>"
@@ -116,7 +116,7 @@ Config {
                          , "-o" , "<left>% (<timeleft>)"
                          , "-O" , "AC <left>%"
                          , "-i" , "<left>%"
-                         ] 50 "B1"
+                         ] 60 "B1"
 
         -- Volume indicator
         , Run Volume "default" "Master" [ "-t", "<fn=2>\xe62b</fn> <volume>%"
@@ -125,7 +125,7 @@ Config {
                                         , "-O", "\xf028"
                                         , "-C", "grey"
                                         , "-c", "#666666"
-                                        ] 2
+                                        ] 5
 
         , Run StdinReader
     ]

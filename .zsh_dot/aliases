@@ -5,7 +5,7 @@ alias l='ls'
 alias l.="ls -a | egrep '^\.'"
 alias mirrors='sudo reflector --latest 200 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias venv='python3.7 -m venv'
-alias unitunnel='sshuttle 131.220.0.0/16 -r kroemer@zeus.cs.uni-bonn.de'
+alias unitunnel='sshuttle 193.175.71.0/24 128.7.3.0/24 131.220.0.0/16 -r kroemer@zeus.cs.uni-bonn.de'
 alias emacsclient='emacsclient -t --socket-name=null'
 alias tap-enable='xinput --set-prop 11 300 1'
 alias tap-disable='xinput --set-prop 11 300 0'
