@@ -26,6 +26,6 @@ source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 
 source ~/.zpreztorc
 
-source ~/.zsh_dot/aliases
+source ~/.zsh_dot/*
 
 # neofetch

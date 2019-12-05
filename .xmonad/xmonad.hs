@@ -112,14 +112,17 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch emacs 
     , ((modm,               xK_e     ), spawn "emacs")
 
-    -- launch file manager - vifm
+    -- launch filemanager - vifm
     -- , ((modm,               xK_f     ), spawn "termite -e vifm")
 
     -- launch network manager 
-    , ((modm,               xK_n     ), spawn "networkmanager_dmenu")
+    , ((modm,               xK_n     ), spawn "networkmanager_dmenu -fn 'UbuntuMono Nerd Font:size=12' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -p 'networkmanager:'")
 
     -- launch dmenu
     , ((modm .|. shiftMask, xK_p     ), spawn "dmenu_run -fn 'UbuntuMono Nerd Font:size=12' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -p 'dmenu:'")
+
+    -- launch filemanager - dmenufm
+    , ((modm,               xK_f     ), spawn "dmenufm")
 
     -- launch rofi
     , ((modm,               xK_p     ), spawn "rofi -modi window,run,ssh,combi -show combi")
@@ -157,7 +160,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- , ((modm .|. shiftMask, xK_m     ), sendMessage RestoreNextMinimizedWin)
 
     -- Maximize selected window
-    , ((modm,               xK_f     ), (sendMessage $ Toggle FULL))
+    -- , ((modm, .|. shiftMask, xK_f     ), (sendMessage $ Toggle FULL))
 
     -- Swap the focused window and the master window
     , ((modm .|. shiftMask, xK_Return), windows W.swapMaster)
@@ -239,7 +242,8 @@ addKeys = [ ("<XF86AudioMute>",   spawn "pamixer -t")
           , ("<XF86AudioRaiseVolume>", spawn "pamixer -i 5")
           , ("<XF86MonBrightnessDown>", spawn "xbacklight -10")
           , ("<XF86MonBrightnessUp>", spawn "xbacklight +10")
-          , ("<Print>",           spawn "scrot")]
+          , ("<Print>",           spawn "scrot")
+          ]
 
 ------------------------------------------------------------------------
 ---WORKSPACES

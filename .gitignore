@@ -108,3 +108,8 @@ static-code-analyzer/
 xmobar/
 tmp
 .gitconfig
+.config/dmenufm/
+.config/vifm/vifminfo
+.dmenufm/
+.ghidra/
+Ghidra/
