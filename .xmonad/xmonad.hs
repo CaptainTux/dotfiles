@@ -71,7 +71,9 @@ myFocusedBorderColor = "#bbc5ff"
 myStartupHook = do
           -- spawn "hsetroot -fill ~/.wallpaper.png -tint \\#cf4f7f &"  -- semicolon wallpaper
           -- spawn "hs-notifications"
-          spawn "hsetroot -fill ~/.wallpaper.jpg -tint \\#5f4e6e &"  -- i love linux wallpaper
+          spawn "archur -r 1920x1080 -fg \\#ECCCFF -bg \\#282a36 -o /home/tux/.random_wallpaper.png # generate random arch wallpaper &"
+          spawn "hsetroot -fill ~/.random_wallpaper.png &"
+          -- spawn "hsetroot -fill ~/.wallpaper.jpg -tint \\#5f4e6e &"  -- i love linux wallpaper
           spawn "xinput --set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1 &"
           spawn "ibus-daemon &"
           spawn "owncloud &"
@@ -116,16 +118,16 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- , ((modm,               xK_f     ), spawn "termite -e vifm")
 
     -- launch network manager 
-    , ((modm,               xK_n     ), spawn "networkmanager_dmenu -fn 'UbuntuMono Nerd Font:size=12' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -p 'networkmanager:'")
+    , ((modm,               xK_n     ), spawn "networkmanager_dmenu -fn 'UbuntuMono Nerd Font:size=13' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -p 'networkmanager:'")
 
     -- launch dmenu
-    , ((modm .|. shiftMask, xK_p     ), spawn "dmenu_run -fn 'UbuntuMono Nerd Font:size=12' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -p 'dmenu:'")
+    , ((modm,               xK_p     ), spawn "dmenu_run -fn 'UbuntuMono Nerd Font:size=13' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -l 15 -p 'dmenu:'")
 
     -- launch filemanager - dmenufm
     , ((modm,               xK_f     ), spawn "dmenufm")
 
     -- launch rofi
-    , ((modm,               xK_p     ), spawn "rofi -modi window,run,ssh,combi -show combi")
+    , ((modm .|. shiftMask, xK_p     ), spawn "rofi -modi window,run,ssh,combi -show combi")
 
     -- launch rofi-pass
     , ((modm .|. shiftMask, xK_u     ), spawn "rofi-pass")
@@ -267,12 +269,17 @@ data LibNotifyUrgencyHook = LibNotifyUrgencyHook deriving (Read, Show)
 -- myManageHook = manageDocks <+> manageHook defaultConfig
 
 myManageHook = composeAll $ [
---   isNotification --> doIgnore
-  className =? "firefox"       --> doF (W.shift "δ")
-  , className =? "discord"       --> doF (W.shift "ε")
-  , className =? "Emacs"         --> doF (W.shift "α")
-  , className =? "qpdfview"      --> doF (W.shift "γ")
-  , isFullscreen                 --> doFloat
+  -- isNotification --> doIgnore
+  className =? "Emacs"               --> doF (W.shift "α")
+  -- , className =? "nomacs"            --> doF (W.shift "β") -- image viewer, currently does not work :(
+  , className =? "qpdfview"          --> doF (W.shift "γ")
+  , className =? "org.pwmt.zathura"  --> doF (W.shift "γ")
+  , className =? "firefox"           --> doF (W.shift "δ")
+  , className =? "discord"           --> doF (W.shift "ε")
+  , className =? "Thunderbird"       --> doF (W.shift "ε")
+  -- , className =? "Telegram"          --> doF (W.shift "ε") -- currently does not work :(
+  , className =? "Signal"            --> doF (W.shift "ε")
+  , isFullscreen                     --> doFloat
   ]
 --  where
 --    isNotification :: Query Bool
