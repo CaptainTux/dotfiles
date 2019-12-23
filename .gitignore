@@ -115,3 +115,11 @@ tmp
 Ghidra/
 work/
 .random_wallpaper.png
+.config/Riot/
+.config/TabNine/
+.config/coc/
+.config/nvim/
+.fzf.bash
+.fzf.zsh
+.pwntools-cache/
+.vim/

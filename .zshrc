@@ -6,6 +6,8 @@ fi
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
+export XDG_USER_CONFIG_DIR="$HOME/.config/"
+
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 export COMPLETION_WAITING_DOTS="true"
 
@@ -18,9 +20,8 @@ export QT_IM_MODULE=ibus
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx --keeptty; fi
 
-export EDITOR="vim"
+export EDITOR="nvim"
 # export RUST_SRC_PATH=/usr/local/src/rust/src
-export PATH=$PATH:~/.cabal/bin
 
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 
@@ -29,3 +30,5 @@ source ~/.zpreztorc
 source ~/.zsh_dot/*
 
 # neofetch
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
