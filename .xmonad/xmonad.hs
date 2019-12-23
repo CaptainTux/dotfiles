@@ -77,6 +77,7 @@ myStartupHook = do
           spawn "xinput --set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1 &"
           spawn "ibus-daemon &"
           spawn "owncloud &"
+          -- spawn "stalonetray &"
           -- spawn "shutdown -P 22:30 &"
           setWMName "LG3D"
 
@@ -117,17 +118,32 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch filemanager - vifm
     -- , ((modm,               xK_f     ), spawn "termite -e vifm")
 
-    -- launch network manager 
-    , ((modm,               xK_n     ), spawn "networkmanager_dmenu -fn 'UbuntuMono Nerd Font:size=13' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -p 'networkmanager:'")
+    -- launch filemanager - rofi file browser
+    -- available on github
+    -- https://github.com/marvinkreis/rofi-file-browser-extended
+    , ((modm,               xK_f     ), spawn "rofi -show file-browser")
+
+    -- launch network manager - using rofi-dmenu
+    , ((modm,               xK_n     ), spawn "networkmanager_dmenu \
+		                              \ -lines 1 -line-margin 0 -line-padding 1 \
+		                              \ -separator-style none -font \"mono 11\" -columns 12 -bw 0 \
+		                              \ -hide-scrollbar")
+    -- launch network manager - using standard dmenu
+    -- , ((modm,               xK_n     ), spawn "networkmanager_dmenu -fn 'UbuntuMono Nerd Font:size=13' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -p 'networkmanager:'")
 
     -- launch dmenu
-    , ((modm,               xK_p     ), spawn "dmenu_run -fn 'UbuntuMono Nerd Font:size=13' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -l 15 -p 'dmenu:'")
+    , ((modm .|. shiftMask, xK_p     ), spawn "rofi -show run -modi run \
+		                              \ -lines 1 -line-margin 0 -line-padding 1 \
+		                              \ -separator-style none -font \"mono 11\" -columns 12 -bw 0 \
+		                              \ -hide-scrollbar")
+    -- , ((modm .|. shiftMask, xK_p     ), spawn "dmenu_run -fn 'UbuntuMono Nerd Font:size=13' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -l 15 -p 'dmenu:'")
+    
 
     -- launch filemanager - dmenufm
-    , ((modm,               xK_f     ), spawn "dmenufm")
+    -- , ((modm,               xK_f     ), spawn "dmenufm")
 
     -- launch rofi
-    , ((modm .|. shiftMask, xK_p     ), spawn "rofi -modi window,run,ssh,combi -show combi")
+    , ((modm,               xK_p     ), spawn "rofi -modi window,run,ssh,combi -show run")
 
     -- launch rofi-pass
     , ((modm .|. shiftMask, xK_u     ), spawn "rofi-pass")
@@ -275,6 +291,7 @@ myManageHook = composeAll $ [
   , className =? "qpdfview"          --> doF (W.shift "γ")
   , className =? "org.pwmt.zathura"  --> doF (W.shift "γ")
   , className =? "firefox"           --> doF (W.shift "δ")
+  , className =? "qutebrowser"       --> doF (W.shift "δ")
   , className =? "discord"           --> doF (W.shift "ε")
   , className =? "Thunderbird"       --> doF (W.shift "ε")
   -- , className =? "Telegram"          --> doF (W.shift "ε") -- currently does not work :(
@@ -325,7 +342,7 @@ myLogHook xmproc = dynamicLogWithPP xmobarPP
                         , ppVisible = xmobarColor "#c3e88d" ""                -- Visible but not current workspace
                         , ppHidden = xmobarColor "#82AAFF" "" . wrap "*" ""   -- Hidden workspaces in xmobar
                         , ppHiddenNoWindows = xmobarColor "#F07178" ""        -- Hidden workspaces (no windows)
-                        , ppTitle = xmobarColor "#d0d0d0" "" . shorten 40     -- Title of active window in xmobar
+                        , ppTitle = xmobarColor "#F8F8F2" "" . shorten 40     -- Title of active window in xmobar
                         , ppSep =  "<fc=#9AEDFE> : </fc>"                     -- Separators in xmobar
                         , ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!"  -- Urgent workspace
                         , ppExtras  = [windowCount]                           -- # of windows current workspace
@@ -336,8 +353,7 @@ myLogHook xmproc = dynamicLogWithPP xmobarPP
 
 main = do
     xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc" -- xmobar
-    xmonad
-      
+    xmonad 
       $ ewmh $ docks $ myConfig xmproc
 
 -- A structure containing your configuration settings, overriding
