@@ -6,63 +6,78 @@ Config {
                               , "xft:NotoSansDisplay Nerd Font Mono:size=11"
                               , "xft:Liberation Mono for Powerline:size=11:style=regular"
                               ]
-        , overrideRedirect = False
+        , overrideRedirect = True
         , borderColor = "#2C323C"
         , border = TopB
         , bgColor = "#282A36"
         , fgColor = "#B4BED1"
         , position = TopW L 100
-        , commands = [    Run Weather "EDDK" ["-t","<tempC>°C","-L","18","-H","25","--normal","#98c379","--high","red","--low","lightblue"] 36000
-                        , Run Network "wlp4s0"
-                          [ "-L"                , "0"
-                            , "-H"              , "32"
-                            , "--normal"        , "#98c379"
-                            , "--high"          , "#e06c75"
-                            , "-t"              , "<rx>KB|<tx>KB"
-                          ] 10
-                        , Run Cpu
-                          [ "-L"                , "3"
-                            , "-H"              , "50"
-                            ,"--normal"         , "#98c379"
-                            ,"--high"           , "#e06c75"
-                          ] 10
-                        , Run Memory
-                          [ "-t", "Mem: <usedratio>%"] 10
-                        , Run Swap [] 10
-                        , Run Com "uname" ["-s","-r"] "" 36000
-                        , Run Date "%I:%M:%S" "date" 10
-                        , Run BatteryN   ["BAT0"]
-                          [ "--template"  , "<fn=2>\xf8a0</fn> <acstatus>"
-                            , "--Low"       , "10"    -- units: %
-                            , "--High"      , "60"    -- units: %
-                            , "--"                    -- battery specific options
-                            , "-o" , "<left>% (<timeleft>)"
-                            , "-O" , "AC <left>%"
-                            , "-i" , "<left>%"
-                          ] 60 "B0"
-                        , Run BatteryN   ["BAT1"]
-                           [ "--template", "<fn=2>\xf8a3</fn> <acstatus>"
-                             , "--Low"       , "10"    -- units: %
-                             , "--High"      , "60"    -- units: %
-                             , "--" -- battery specific options
-                             , "-o" , "<left>% (<timeleft>)"
-                             , "-O" , "AC <left>%"
-                             , "-i" , "<left>%"
-                           ] 60 "B1"
-                         -- Volume indicator
-                         , Run Volume "default" "Master"
-                           [ "-t", "<fn=2>\xe62b</fn> <volume>%"
-                             , "--"
-                             , "-o", "\xf026"
-                             , "-O", "\xf028"
-                             , "-C", "grey"
-                             , "-c", "#666666"
-                           ] 5
-                        , Run StdinReader
-                        ]
+        
+        , commands = [ Run Weather "EDDK"
+                        [  "-t"                       , "<tempC>°C"
+                          , "-L"                      , "18"
+                          , "-H"                      , "25"
+                          , "--normal"                , "#98c379"
+                          , "--high"                  , "red"
+                          , "--low"                   , "lightblue"
+                        ] 36000
+                         
+                      , Run Network "wlp4s0"
+                        [   "-L"                      , "0"
+                          , "-H"                      , "32"
+                          , "--normal"                , "#98c379"
+                          , "--high"                  , "#e06c75"
+                          , "-t"                      , "<rx>KB|<tx>KB"
+                        ] 10
+                        
+                      , Run Cpu
+                        [   "-L"                      , "3"
+                          , "-H"                      , "50"
+                          , "--normal"                , "#98c379"
+                          , "--high"                  , "#e06c75"
+                        ] 10
+                        
+                      , Run Memory
+                        [ "-t"                        , "Mem: <usedratio>%"
+                        ] 10
+                      
+                      , Run Date "%I:%M:%S" "date" 10
+                      
+                      , Run BatteryN   ["BAT0"]
+                        [ "--template"                , "<fn=2>\xf8a0</fn> <acstatus>"
+                          , "--Low"                   , "10"                                  -- units: %
+                          , "--High"                  , "60"                                  -- units: %
+                          , "--"                                                              -- battery specific options
+                          , "-o"                      , "<left>% (<timeleft>)"
+                          , "-O"                      , "AC <left>%"
+                          , "-i"                      , "<left>%"
+                        ] 60 "B0"
+                      
+                      , Run BatteryN   ["BAT1"]
+                        [ "--template"                , "<fn=2>\xf8a3</fn> <acstatus>"
+                          , "--Low"                   , "10"                                  -- units: %
+                          , "--High"                  , "60"                                  -- units: %
+                          , "--"                                                              -- battery specific options
+                          , "-o"                      , "<left>% (<timeleft>)"
+                          , "-O"                      , "AC <left>%"
+                          , "-i"                      , "<left>%"
+                        ] 60 "B1"
+                        
+                       -- Volume indicator
+                      , Run Volume "default" "Master"
+                        [   "-t"                     , "<fn=2>\xe62b</fn> <volume>%"
+                           , "--"
+                           , "-o"                     , "\xf026"
+                           , "-O"                     , "\xf028"
+                           , "-C"                     , "grey"
+                           , "-c"                     , "#666666"
+                        ] 5
+                      , Run StdinReader
+                     ]
         , sepChar = "%" 
         , alignSep = "}{"
-        , template = " <fn=3>%StdinReader%</fn> }{ %EDDK% | [ %wlp4s0% ] | %cpu% | %memory% * %swap% | <fc=#d19a66>%date%</fc> | %default:Master% | %B0% | %B1%"
+        -- , template = " <fn=3>%StdinReader%</fn> }{ %EDDK% | [ %wlp4s0% ] | %cpu% | %memory% * %swap% | %default:Master% | %B0% | %B1% | <fc=#d19a66>%date%</fc> "
+        , template = " <fn=3>%StdinReader%</fn> }{ %EDDK% | [ %wlp4s0% ] | %cpu% | %memory% | %default:Master% | %B0% | %B1% | <fc=#d19a66>%date%</fc> "
         }
 
     
