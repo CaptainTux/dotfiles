@@ -6,6 +6,8 @@
 
 config_version: 2
 settings:
+  completion.web_history.max_items:
+    global: -1
   url.default_page:
     global: https://www.startpage.com/
   url.incdec_segments:
