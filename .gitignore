@@ -123,3 +123,6 @@ work/
 .fzf.zsh
 .pwntools-cache/
 .vim/
+.wget-hsts
+.pvpn-cli/
+redrocket_flags

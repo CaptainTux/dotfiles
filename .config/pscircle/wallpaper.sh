@@ -32,7 +32,7 @@ pscircle \
     --tree-rotate=true \
     --tree-rotation-angle=0 \
     --tree-center=0:500 \
-    --background-image=/home/$USER/.config/pscircle/gentoo_v2.png
+    --background-image=/home/$USER/.random_wallpaper.png
 
 # --background-color=1e2226 \
 
