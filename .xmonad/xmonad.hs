@@ -77,6 +77,7 @@ myStartupHook = do
           spawn "xinput --set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1 &"
           spawn "ibus-daemon &"
           spawn "owncloud &"
+          spawn "pgrep redshift || redshift -l 50.70:7.09 &"
           -- spawn "stalonetray &"
           -- spawn "shutdown -P 22:30 &"
           setWMName "LG3D"

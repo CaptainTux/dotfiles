@@ -52,5 +52,7 @@ wmname LG3D
 
 exec xmonad
 
+killall redshift
+redshift -l 50.70:7.09 &
 
 # esac
