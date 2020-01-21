@@ -5,7 +5,7 @@ Config {
         , additionalFonts = [ "xft:FontAwesome:size=11"
                               , "xft:NotoSansDisplay Nerd Font Mono:size=11"
                               , "xft:Liberation Mono for Powerline:size=11:style=regular"
-                              ]
+                            ] 
         , overrideRedirect = True
         , borderColor = "#2C323C"
         , border = TopB
@@ -14,7 +14,7 @@ Config {
         , position = TopW L 100
         
         , commands = [ Run Weather "EDDK"
-                        [  "-t"                       , "<tempC>°C"
+                        [  "-t"                       , "<fn=1>\xf285</fn> <skyCondition> <tempC>°C"
                           , "-L"                      , "18"
                           , "-H"                      , "25"
                           , "--normal"                , "#98c379"
@@ -23,22 +23,33 @@ Config {
                         ] 36000
                          
                       , Run Network "wlp4s0"
-                        [   "-L"                      , "0"
+                        [   "-t"                      , "<fn=3>↓<rx>, ↑<tx></fn>"
+                          , "-L"                      , "0"
                           , "-H"                      , "32"
                           , "--normal"                , "#98c379"
                           , "--high"                  , "#e06c75"
-                          , "-t"                      , "<rx>KB|<tx>KB"
+                          
                         ] 10
                         
                       , Run Cpu
-                        [   "-L"                      , "3"
+                        [   "-t"                      , "<fn=1>\xf5a3</fn> <total>%"      -- \xf108
+                          , "-L"                      , "3"
                           , "-H"                      , "50"
                           , "--normal"                , "#98c379"
                           , "--high"                  , "#e06c75"
                         ] 10
+
+                      , Run CoreTemp
+                        [   "-t"                      , "<fn=1>\xf166</fn> CoreTemp: <core0>-<core1>-<core2>-<core3>°C"      -- \xf26a
+                          , "-L"                      , "40"
+                          , "-H"                      , "70"
+                          , "--low"                   , "#c0a39a"
+                          , "--normal"                , "#a3a3a3"
+                          , "--high"                  , "#bf4040"
+                        ] 50
                         
                       , Run Memory
-                        [ "-t"                        , "Mem: <usedratio>%"
+                        [ "-t"                        , "<fn=1>\xf16c</fn> <usedratio>%"
                         ] 10
                       
                       , Run Date "%I:%M:%S" "date" 10
