@@ -32,7 +32,7 @@ Config {
                         ] 10
                         
                       , Run Cpu
-                        [   "-t"                      , "<fn=1>\xf5a3</fn> <total>%"      -- \xf108
+                        [   "-t"                      , "<fn=1>\xf126</fn> <total>%"      -- \xf108
                           , "-L"                      , "3"
                           , "-H"                      , "50"
                           , "--normal"                , "#98c379"
@@ -76,10 +76,10 @@ Config {
                         
                        -- Volume indicator
                       , Run Volume "default" "Master"
-                        [   "-t"                     , "<fn=2>\xe62b</fn> <volume>%"
+                        [   "-t"                      , "<status>"                            -- "<fn=2>\xe62b</fn><status> <volume>%"
                            , "--"
-                           , "-o"                     , "\xf026"
-                           , "-O"                     , "\xf028"
+                           , "-o"                     , "<fn=2>\xf026</fn>"
+                           , "-O"                     , "<fn=2>\xf028</fn> <volume>%"
                            , "-C"                     , "grey"
                            , "-c"                     , "#666666"
                         ] 5
