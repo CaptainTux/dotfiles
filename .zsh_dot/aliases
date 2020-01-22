@@ -1,4 +1,4 @@
-alias ls='exa'
+alias protonvpn='sudo protonvpn'
 alias la='ls -a'
 alias ll='ls -la'
 alias l='ls'
