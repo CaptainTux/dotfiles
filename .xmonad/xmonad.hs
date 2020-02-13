@@ -77,7 +77,7 @@ myStartupHook = do
           spawn "xinput --set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1 &"
           spawn "ibus-daemon &"
           spawn "owncloud &"
-          spawn "pgrep redshift || redshift -l 50.70:7.09 &"
+          spawn "pgrep redshift || redshift -l 50.70:7.09 -t 6000:3500 -m randr &"
           -- spawn "stalonetray &"
           -- spawn "shutdown -P 22:30 &"
           setWMName "LG3D"
@@ -122,29 +122,33 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch filemanager - rofi file browser
     -- available on github
     -- https://github.com/marvinkreis/rofi-file-browser-extended
-    , ((modm,               xK_f     ), spawn "rofi -show file-browser")
+    -- , ((modm,               xK_f     ), spawn "rofi -show file-browser")
 
     -- launch network manager - using rofi-dmenu
-    , ((modm,               xK_n     ), spawn "networkmanager_dmenu \
-		                              \ -lines 1 -line-margin 0 -line-padding 1 \
-		                              \ -separator-style none -font \"mono 11\" -columns 12 -bw 0 \
-		                              \ -hide-scrollbar")
+    -- , ((modm,               xK_n     ), spawn "networkmanager_dmenu \
+    --     	                              \ -lines 1 -line-margin 0 -line-padding 1 \
+    --     	                              \ -separator-style none -font \"mono 11\" -columns 12 -bw 0 \
+    --     	                              \ -hide-scrollbar")
+      
     -- launch network manager - using standard dmenu
-    -- , ((modm,               xK_n     ), spawn "networkmanager_dmenu -fn 'UbuntuMono Nerd Font:size=13' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -p 'networkmanager:'")
+    , ((modm,               xK_n     ), spawn "networkmanager_dmenu -fn 'UbuntuMono Nerd Font:size=13' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -p 'networkmanager:'")
 
-    -- launch dmenu
-    , ((modm .|. shiftMask, xK_p     ), spawn "rofi -show run -modi run \
-		                              \ -lines 1 -line-margin 0 -line-padding 1 \
-		                              \ -separator-style none -font \"mono 11\" -columns 12 -bw 0 \
-		                              \ -hide-scrollbar")
-    -- , ((modm .|. shiftMask, xK_p     ), spawn "dmenu_run -fn 'UbuntuMono Nerd Font:size=13' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -l 15 -p 'dmenu:'")
+    -- launch rofi
+    -- , ((modm .|. shiftMask, xK_p     ), spawn "rofi -show run -modi run \
+    --     	                              \ -lines 1 -line-margin 0 -line-padding 1 \
+    --     	                              \ -separator-style none -font \"mono 11\" -columns 12 -bw 0 \
+    --     	                              \ -hide-scrollbar")
+    , ((modm .|. shiftMask, xK_p     ), spawn "dmenu_run -fn 'UbuntuMono Nerd Font:size=13' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -l 15 -p 'dmenu:'")
     
 
     -- launch filemanager - dmenufm
     -- , ((modm,               xK_f     ), spawn "dmenufm")
 
     -- launch rofi
-    , ((modm,               xK_p     ), spawn "rofi -modi window,run,ssh,combi -show run")
+    -- , ((modm,               xK_p     ), spawn "rofi -modi window,run,ssh,combi -show run")
+
+    -- lauch dmenu
+    , ((modm,               xK_p     ), spawn "dmenu_extended_run")
 
     -- launch rofi-pass
     , ((modm .|. shiftMask, xK_u     ), spawn "rofi-pass")

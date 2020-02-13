@@ -130,3 +130,9 @@ Documents
 SS20
 projects/
 .htb/
+.xournal/
+**/aliases
+.config/telegram-cli/
+.config/systemd/
+.config/chromium/
+**/__pycache__/
