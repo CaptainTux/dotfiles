@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Produced by Beyond Compare 4 from Scooter Software -->
+<BCState Version="1" MinVersion="1">
+	<TBcState>
+		<FirstStartup Value="False"/>
+		<FormPositions>
+			<TViewFrame Value="0;22;1918;1078"/>
+		</FormPositions>
+	</TBcState>
+	<TCheckForUpdatesState>
+		<Build Value="24545"/>
+		<LastChecked Value="2020-02-19 19:28:09"/>
+	</TCheckForUpdatesState>
+	<TTextCompareState>
+		<LeftMRUSpecs>
+			<_0 Value="/tmp/8bqoCk_ban.js"/>
+			<_1 Value="/tmp/9JMGaM_index.js"/>
+			<_2 Value="/tmp/cTMNZH_index.js"/>
+			<_3 Value="/tmp/dcpF5d_index.js"/>
+			<_4 Value="/tmp/lYVdNU_index.js"/>
+			<_5 Value="/tmp/4T9Fo6_index.js"/>
+			<_6 Value="/tmp/rczVTm_message.js"/>
+			<_7 Value="/tmp/U8JRRk_index.js"/>
+			<_8 Value="/tmp/H5I12e_message.js"/>
+		</LeftMRUSpecs>
+		<MRUFonts>
+			<_0 Value="Andale Mono;9"/>
+		</MRUFonts>
+		<RightMRUSpecs>
+			<_0 Value="/home/tux/vac/commands/ban.js"/>
+			<_1 Value="/home/tux/vac/index.js"/>
+			<_2 Value="/home/tux/vac/events/message.js"/>
+			<_3 Value="/home/tux/vac/json/points.json"/>
+			<_4 Value="/home/tux/vac/commands/8ball.js"/>
+			<_5 Value="/home/tux/vac/.gitignore"/>
+		</RightMRUSpecs>
+	</TTextCompareState>
+</BCState>

@@ -76,7 +76,7 @@
         "sublime-project"
     ],
     "watch_folders": [
-        "~/"
+        "~/SS20"
     ],
     "webbrowser": "xdg-open"
 }
