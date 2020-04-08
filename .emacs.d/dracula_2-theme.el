@@ -1,11 +1,10 @@
 (deftheme dracula_2
-  "Created 2019-06-29.")
+  "Created 2019-11-05.")
 
 (custom-theme-set-faces
  'dracula_2
  '(button ((t (:underline t))))
  '(cursor ((((min-colors 16777216)) (:background "#ccccc7")) (t (:background "#ccccc7"))))
- '(ffap ((((min-colors 16777216)) (:foreground "#b6b6b2")) (t (:foreground "#b6b6b2"))))
  '(fringe ((((min-colors 16777216)) (:background "#282a36" :foreground "#b6b6b2")) (t (:background "#000000" :foreground "#b6b6b2"))))
  '(highlight ((((min-colors 16777216)) (:foreground "#ccccc7" :background "#464752")) (t (:foreground "#ccccc7" :background "#464752"))))
  '(hl-line ((((min-colors 16777216)) (:background "#44475a")) (t (:background "#44475a"))))
@@ -87,31 +86,9 @@
  '(match ((t (:background "#2F2F2F" :foreground "#8584ae" :weight bold))))
  '(isearch ((((min-colors 16777216)) (:bold t :foreground "#ffb86c" :background "#464752")) (t (:bold t :foreground "#ffb86c" :background "#464752"))))
  '(isearch-fail ((((min-colors 16777216)) (:foreground "#282a36" :background "#ffb86c")) (t (:foreground "#000000" :background "#ffb86c"))))
- '(js2-external-variable ((((min-colors 16777216)) (:foreground "#bd93f9")) (t (:foreground "#bd93f9"))))
- '(js2-function-param ((((min-colors 16777216)) (:foreground "#8be9fd")) (t (:foreground "#8be9fd"))))
- '(js2-jsdoc-html-tag-delimiter ((((min-colors 16777216)) (:foreground "#f1fa8c")) (t (:foreground "#f1fa8c"))))
- '(js2-jsdoc-html-tag-name ((((min-colors 16777216)) (:foreground "#0189cc")) (t (:foreground "#0189cc"))))
- '(js2-jsdoc-value ((((min-colors 16777216)) (:foreground "#f1fa8c")) (t (:foreground "#f1fa8c"))))
- '(js2-private-function-call ((((min-colors 16777216)) (:foreground "#8be9fd")) (t (:foreground "#8be9fd"))))
- '(js2-private-member ((((min-colors 16777216)) (:foreground "#ccccc7")) (t (:foreground "#ccccc7"))))
  '(mode-line ((((min-colors 16777216)) (:foreground nil :background "#44475a" :box "#44475a")) (t (:foreground nil :background "#44475a" :box "#44475a"))))
  '(mode-line-inactive ((((min-colors 16777216)) (:foreground "#f8f8f2" :background "#373844" :box "#373844")) (t (:foreground "#f8f8f2" :background "#373844" :box "#373844"))))
  '(mode-line-buffer-id ((t (:foreground "#f4c5be" :weight bold))))
- '(outline-1 ((((min-colors 16777216)) (:foreground "#50fa7b")) (t (:foreground "#50fa7b"))))
- '(outline-2 ((((min-colors 16777216)) (:foreground "#bd93f9")) (t (:foreground "#bd93f9"))))
- '(outline-3 ((((min-colors 16777216)) (:foreground "#8be9fd")) (t (:foreground "#8be9fd"))))
- '(outline-4 ((((min-colors 16777216)) (:foreground "#ffb86c")) (t (:foreground "#ffb86c"))))
- '(outline-5 ((((min-colors 16777216)) (:foreground "#ffb86c")) (t (:foreground "#ffb86c"))))
- '(outline-6 ((((min-colors 16777216)) (:foreground "#0189cc")) (t (:foreground "#0189cc"))))
- '(rainbow-delimiters-depth-1-face ((((min-colors 16777216)) (:foreground "#f8f8f2")) (t (:foreground "#f8f8f2"))))
- '(rainbow-delimiters-depth-2-face ((((min-colors 16777216)) (:foreground "#8be9fd")) (t (:foreground "#8be9fd"))))
- '(rainbow-delimiters-depth-3-face ((((min-colors 16777216)) (:foreground "#bd93f9")) (t (:foreground "#bd93f9"))))
- '(rainbow-delimiters-depth-4-face ((((min-colors 16777216)) (:foreground "#ff79c6")) (t (:foreground "#ff79c6"))))
- '(rainbow-delimiters-depth-5-face ((((min-colors 16777216)) (:foreground "#ffb86c")) (t (:foreground "#ffb86c"))))
- '(rainbow-delimiters-depth-6-face ((((min-colors 16777216)) (:foreground "#50fa7b")) (t (:foreground "#50fa7b"))))
- '(rainbow-delimiters-depth-7-face ((((min-colors 16777216)) (:foreground "#f1fa8c")) (t (:foreground "#f1fa8c"))))
- '(rainbow-delimiters-depth-8-face ((((min-colors 16777216)) (:foreground "#0189cc")) (t (:foreground "#0189cc"))))
- '(rainbow-delimiters-unmatched-face ((((min-colors 16777216)) (:foreground "#ffb86c")) (t (:foreground "#ffb86c"))))
  '(undo-tree-visualizer-active-branch-face ((t (:foreground "#ffe000" :weight bold))))
  '(undo-tree-visualizer-current-face ((t (:foreground "#BC8383" :weight bold))))
  '(undo-tree-visualizer-default-face ((t (:foreground "#8584ae"))))
@@ -130,5 +107,3 @@
  '(default ((((min-colors 16777216)) (:background "#282a36" :foreground "#f8f8f2")) (t (:background "#000000" :foreground "#f8f8f2")))))
 
 (provide-theme 'dracula_2)
-
-;;; dracula_2-theme.el ends here

@@ -39,12 +39,14 @@
 
 (global-set-key (kbd "M-x") 'helm-M-x)
 
+;; (global-set-key (kbd "C-s") 'search-forward)
+
 
 (global-visual-line-mode t)
 
 (scroll-bar-mode -1)
 
-(set-frame-font "Inconsolata 15" nil t)
+(set-frame-font "DejaVu Sans Mono-15" nil t)
 
 ;; turn on highlight matching brackets when cursor is on one
 (show-paren-mode 1)

@@ -265,7 +265,7 @@ addKeys = [ ("<XF86AudioMute>",   spawn "pamixer -t")
           , ("<XF86AudioRaiseVolume>", spawn "pamixer -i 5")
           , ("<XF86MonBrightnessDown>", spawn "xbacklight -10")
           , ("<XF86MonBrightnessUp>", spawn "xbacklight +10")
-          -- , ("<Print>",           spawn "scrot")
+          , ("<Print>",           spawn "flameshot gui")
           ]
 
 ------------------------------------------------------------------------
