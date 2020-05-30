@@ -39,6 +39,9 @@
 
 (global-set-key (kbd "M-x") 'helm-M-x)
 
+;; disable helm-history selection
+(setq helm-move-to-line-cycle-in-source nil)
+
 ;; (global-set-key (kbd "C-s") 'search-forward)
 
 

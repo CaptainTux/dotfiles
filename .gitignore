@@ -137,3 +137,17 @@ projects/
 .config/chromium/
 **/__pycache__/
 vac/
+.config/libreoffice/
+.emacs.d/.github/
+.emacs.d/transient/
+.netrc
+MFB
+go/
+rust_shell/
+.ghc/
+.emacs.d/.lsp-session-v1
+.emacs.d/.python-environments/
+.emacs.d/ac-comphist.dat
+.xournalpp/
+projectEuler
+scalerist/

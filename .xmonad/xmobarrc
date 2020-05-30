@@ -14,13 +14,13 @@ Config {
         , position = TopW L 100
         
         , commands = [ Run Weather "EDDK"
-                        [  "-t"                       , "<fn=1>\xf285</fn> <skyCondition> <tempC>°C"
+                        [   "-t"                      , "<metar>"
                           , "-L"                      , "18"
                           , "-H"                      , "25"
                           , "--normal"                , "#98c379"
                           , "--high"                  , "red"
                           , "--low"                   , "lightblue"
-                        ] 36000
+                        ] 18000
                          
                       , Run Network "wlp4s0"
                         [   "-t"                      , "<fn=3>↓<rx>, ↑<tx></fn>"
