@@ -46,7 +46,7 @@ import qualified Data.Map as M
 ---CONFIG
 ------------------------------------------------------------------------
 myModMask       = mod4Mask  -- Sets modkey to super/windows key
-myTerminal      = "termite" --  default terminal
+myTerminal      = "kitty" --  default terminal
 myEditor        = "emacs"  -- Sets default text editor
 
 -- Whether focus follows the mouse pointer.
@@ -138,7 +138,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --     	                              \ -lines 1 -line-margin 0 -line-padding 1 \
     --     	                              \ -separator-style none -font \"mono 11\" -columns 12 -bw 0 \
     --     	                              \ -hide-scrollbar")
-    , ((modm .|. shiftMask, xK_p     ), spawn "dmenu_run -fn 'UbuntuMono Nerd Font:size=13' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -l 15 -p 'dmenu:'")
+    , ((modm,               xK_p     ), spawn "dmenu_run -fn 'UbuntuMono Nerd Font:size=13' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -l 15 -p 'dmenu:'")
     
 
     -- launch filemanager - dmenufm
@@ -147,8 +147,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch rofi
     -- , ((modm,               xK_p     ), spawn "rofi -modi window,run,ssh,combi -show run")
 
-    -- lauch dmenu
-    , ((modm,               xK_p     ), spawn "dmenu_extended_run")
+    -- lauch dmenu-extended
+    -- , ((modm,               xK_p     ), spawn "dmenu_extended_run")
 
     -- launch rofi-pass
     , ((modm .|. shiftMask, xK_u     ), spawn "rofi-pass")

@@ -60,11 +60,11 @@
 ;; jsx mode for react development
 ;; (add-to-list 'auto-mode-alist '("components\\/.*\\.js\\'" . rjsx-mode))
 
-
-(add-hook 'after-make-frame-functions
-          (lambda (frame)
-            (with-selected-frame frame
-              (load-theme 'dracula_2 t))))
+;; (add-hook 'after-make-frame-functions
+;;           (lambda (frame)
+;;             (with-selected-frame frame
+;;               (load-theme 'gruvbox-dark-medium t))))
+;;               ;; (load-theme 'dracula_2 t))))
 
 
 ;; (set-frame-font "DejaVu Sans Mono-14" nil t)
