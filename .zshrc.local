@@ -35,6 +35,8 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
     ssh-add ~/.ssh/id_rsa
 fi
 
+export PATH="$PATH:$HOME/.emacs.d/bin"
+
 # if [ -z "$TMUX" ]; then
 #     tmux attach -t default || tmux new -s default
 # fi

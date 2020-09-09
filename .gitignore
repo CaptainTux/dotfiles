@@ -172,3 +172,14 @@ VATSIM/
 VRC.ini
 WS2021
 debug.txt
+.emacs.d/LICENSE
+.emacs.d/bin/
+.emacs.d/docs/
+.emacs.d/early-init.el
+.emacs.d/init.example.el
+.emacs.d/test/
+.emacs.d_backup/
+.recovery_codes/
+FLT_3_Q8SKVA9114_0.pdf
+Uni/
+VATSIM
