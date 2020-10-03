@@ -35,6 +35,13 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
+(load "auctex.el" nil t)
+
+(use-package! pdf-tools
+  :init (load "pdf-tools-autloads" nil t)
+  :config (pdf-tools-install))
+
+(setq +latex-viewers '(pdf-tools))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
