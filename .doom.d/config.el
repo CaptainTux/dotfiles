@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "Milan Kroemer"
-      user-mail-address "s6mikroe@uni-bonn.de")
+;; (setq user-full-name "name"
+;;       user-mail-address "name@domain.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -35,13 +35,18 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
-(load "auctex.el" nil t)
-
 (use-package! pdf-tools
-  :init (load "pdf-tools-autloads" nil t)
+  :if (display-graphic-p)
+  :init (load "pdf-tools-autoloads" nil t)
   :config (pdf-tools-install))
 
-(setq +latex-viewers '(pdf-tools))
+;; Use pdf-tools to open PDF files
+(setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+      TeX-source-correlate-start-server t)
+
+;; Update PDF buffers after successful LaTeX runs
+(add-hook 'TeX-after-compilation-finished-functions
+           #'TeX-revert-document-buffer)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
