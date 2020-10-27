@@ -35,11 +35,6 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
-(use-package! pdf-tools
-  :if (display-graphic-p)
-  :init (load "pdf-tools-autoloads" nil t)
-  :config (pdf-tools-install))
-
 ;; Use pdf-tools to open PDF files
 (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
       TeX-source-correlate-start-server t)
