@@ -183,3 +183,14 @@ debug.txt
 FLT_3_Q8SKVA9114_0.pdf
 Uni/
 VATSIM
+.conan/
+.config/Microsoft/
+.config/flameshot/
+.config/kitty/JetBrains_Darcula.conf
+.config/teams/
+.env
+.texlive/
+.thinkvim.d/
+AFV-Native/
+MA
+distributed-systems/

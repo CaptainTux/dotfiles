@@ -11,6 +11,11 @@
 
 (package! pdf-tools)
 (package! haskell-mode)
+(package! lsp-mode)
+(package! company-lsp)
+(package! lsp-ui)
+(package! ccls)
+
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
