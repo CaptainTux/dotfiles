@@ -8,6 +8,7 @@ import XMonad.Config.Desktop
 
 import XMonad.Layout.Spacing
 import XMonad.Layout.Gaps
+import XMonad.Layout.IndependentScreens
 import XMonad.Layout.Maximize
 import XMonad.Layout.Minimize
 import XMonad.Layout.MultiToggle
@@ -71,12 +72,12 @@ myFocusedBorderColor = "#bbc5ff"
 myStartupHook = do
           -- spawn "hsetroot -fill ~/.wallpaper.png -tint \\#cf4f7f &"  -- semicolon wallpaper
           -- spawn "hs-notifications"
-          spawn "archur -r 1920x1080 -fg \\#ECCCFF -bg \\#282a36 -o /home/tux/.random_wallpaper.png # generate random arch wallpaper &"
+          spawn "archur -r 2540x1440 -fg \\#ECCCFF -bg \\#282a36 -o ~/.random_wallpaper.png"
           spawn "hsetroot -fill ~/.random_wallpaper.png &"
           -- spawn "hsetroot -fill ~/.wallpaper.jpg -tint \\#5f4e6e &"  -- i love linux wallpaper
-          spawn "xinput --set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1 &"
-          spawn "ibus-daemon &"
-          spawn "owncloud &"
+          -- spawn "xinput --set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1 &" -- for laptop only
+          -- spawn "ibus-daemon &"
+          -- spawn "owncloud &"
           spawn "pgrep redshift || redshift -l 50.70:7.09 -t 6000:3500 -m randr &"
           -- spawn "stalonetray &"
           -- spawn "shutdown -P 22:30 &"
@@ -171,11 +172,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Move focus to the next window
     , ((modm,               xK_Tab   ), windows W.focusDown)
 
-    -- Move focus to the next window
-    , ((modm,               xK_j     ), windows W.focusDown)
+    -- -- Move focus to the next window
+    -- , ((modm,               xK_j     ), windows W.focusDown)
 
-    -- Move focus to the previous window
-    , ((modm,               xK_k     ), windows W.focusUp  )
+    -- -- Move focus to the previous window
+    -- , ((modm,               xK_k     ), windows W.focusUp  )
 
     -- Move focus to the master window
     --, ((modm,               xK_m     ), windows W.focusMaster  )
@@ -188,11 +189,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Swap the focused window and the master window
     , ((modm .|. shiftMask, xK_Return), windows W.swapMaster)
 
-    -- Swap the focused window with the next window
-    , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
+    -- -- Swap the focused window with the next window
+    -- , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
 
-    -- Swap the focused window with the previous window
-    , ((modm .|. shiftMask, xK_k     ), windows W.swapUp    )
+    -- -- Swap the focused window with the previous window
+    -- , ((modm .|. shiftMask, xK_k     ), windows W.swapUp    )
 
     -- Shrink the master area
     , ((modm,               xK_h     ), sendMessage Shrink)
@@ -235,23 +236,20 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
     ]
     ++
-
-    --
     -- mod-[1..9], Switch to workspace N
     -- mod-shift-[1..9], Move client to workspace N
     --
-    [((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+    [((m .|. modm, k), windows $ onCurrentScreen f i)
+        | (i, k) <- zip (workspaces' conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
---    ++
-
+    ++
     --
     -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
-    -- [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-    --    | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
-    --    , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+    [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
+       | (key, sc) <- zip [xK_a, xK_s, xK_d] [2, 3, 0]
+       , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 
 hiddenNotNSP :: X (WindowSpace -> Bool)
@@ -274,7 +272,7 @@ addKeys = [ ("<XF86AudioMute>",   spawn "pamixer -t")
         
 -- myWorkspaces = ["一", "二", "三", "四", "五", "六", "七", "八", "九"]
 
-myWorkspaces = ["α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ" ]
+myWorkspaces = withScreens 4 ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
   
 data LibNotifyUrgencyHook = LibNotifyUrgencyHook deriving (Read, Show)
 
@@ -291,17 +289,17 @@ data LibNotifyUrgencyHook = LibNotifyUrgencyHook deriving (Read, Show)
 
 myManageHook = composeAll $ [
   -- isNotification --> doIgnore
-  className =? "Emacs"               --> doF (W.shift "α")
-  -- , className =? "nomacs"            --> doF (W.shift "β") -- image viewer, currently does not work :(
-  , className =? "qpdfview"          --> doF (W.shift "γ")
-  , className =? "org.pwmt.zathura"  --> doF (W.shift "γ")
-  , className =? "firefox"           --> doF (W.shift "δ")
-  , className =? "qutebrowser"       --> doF (W.shift "δ")
-  , className =? "discord"           --> doF (W.shift "ε")
-  , className =? "Thunderbird"       --> doF (W.shift "ε")
-  -- , className =? "Telegram"          --> doF (W.shift "ε") -- currently does not work :(
-  , className =? "Signal"            --> doF (W.shift "ε")
-  , isFullscreen                     --> doFloat
+  -- className =? "Emacs"               --> doF (W.shift "α")
+  -- -- , className =? "nomacs"            --> doF (W.shift "β") -- image viewer, currently does not work :(
+  -- , className =? "qpdfview"          --> doF (W.shift "γ")
+  -- , className =? "org.pwmt.zathura"  --> doF (W.shift "γ")
+  -- , className =? "firefox"           --> doF (W.shift "δ")
+  -- , className =? "qutebrowser"       --> doF (W.shift "δ")
+  -- , className =? "discord"           --> doF (W.shift "ε")
+  -- , className =? "Thunderbird"       --> doF (W.shift "ε")
+  -- -- , className =? "Telegram"          --> doF (W.shift "ε") -- currently does not work :(
+  -- , className =? "Signal"            --> doF (W.shift "ε")
+  isFullscreen                     --> doFloat
   ]
 --  where
 --    isNotification :: Query Bool
@@ -346,7 +344,7 @@ myLogHook xmproc = dynamicLogWithPP xmobarPP
                         , ppCurrent = xmobarColor "#FFF370" "" . wrap "[" "]" -- Current workspace in xmobar
                         , ppVisible = xmobarColor "#c3e88d" ""                -- Visible but not current workspace
                         , ppHidden = xmobarColor "#82AAFF" "" . wrap "*" ""   -- Hidden workspaces in xmobar
-                        , ppHiddenNoWindows = xmobarColor "#F07178" ""        -- Hidden workspaces (no windows)
+                        -- , ppHiddenNoWindows = xmobarColor "#F07178" ""        -- Hidden workspaces (no windows)
                         , ppTitle = xmobarColor "#F8F8F2" "" . shorten 40     -- Title of active window in xmobar
                         , ppSep =  "<fc=#9AEDFE> : </fc>"                     -- Separators in xmobar
                         , ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!"  -- Urgent workspace
@@ -357,7 +355,7 @@ myLogHook xmproc = dynamicLogWithPP xmobarPP
 -- No need to modify this.
 
 main = do
-    xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc" -- xmobar
+    xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc -x 3" -- xmobar
     xmonad 
       $ ewmh $ docks $ myConfig xmproc
 
