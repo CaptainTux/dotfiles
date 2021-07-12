@@ -1,0 +1,33 @@
+set selection-clipboard clipboard
+set window-title-home-tilde true
+set statusbar-home-tilde true
+#set adjust-open "best-fit"
+
+set font "monospace normal 12"
+set default-bg "#000000"
+set default-fg "#ffffff"
+
+# set recolor "true"
+# set recolor-lightcolor "#282a36"
+# set recolor-darkcolor "#f8f8f2"
+# set recolor-reverse-video "true"
+
+#color6 cyan default #9FBC00
+set completion-highlight-bg \#8BE9FD
+set inputbar-fg \#8BE9FD
+set highlight-color \#8BE9FD
+set index-active-bg \#8BE9FD
+
+#background special #232323
+set completion-bg \#282A36
+set completion-highlight-fg \#282A36
+set index-bg \#282A36
+set index-active-fg \#282A36
+
+#foreground special default #DDDDDD
+set completion-fg \#F8F8F8
+set default-fg \#F8F8F2
+set index-fg \#F8F8F2
+
+#color10 green default #00BC00
+set highlight-active-color \#5AF78E
