@@ -1,0 +1,7 @@
+
+rofi.terminal: termite
+rofi.location: 1
+rofi.width: 100
+                
+/* -*- mode: css; -*- */
+rofi.theme: /usr/share/rofi/themes/Arc-Dark.rasi

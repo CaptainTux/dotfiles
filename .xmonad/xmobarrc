@@ -1,0 +1,94 @@
+Config {
+        -- font = "xft:Bitstream Vera Sans Mono:size=9:regular:antialias=true"
+        -- font = "xft:Liberation Mono for Powerline:size=11:style=regular"
+        font = "xft:Roboto Nerd Font Mono:size=11"
+        , additionalFonts = [ "xft:FontAwesome:size=11"
+                              , "xft:NotoSansDisplay Nerd Font Mono:size=11"
+                              , "xft:Liberation Mono for Powerline:size=11:style=regular"
+                            ] 
+        , overrideRedirect = True
+        , borderColor = "#2C323C"
+        , border = TopB
+        , bgColor = "#282A36"
+        , fgColor = "#B4BED1"
+        , position = TopW L 100
+        
+        , commands = [ Run Weather "KBOS"
+                        [   "-t"                      , "<metar>"
+                          , "-L"                      , "18"
+                          , "-H"                      , "25"
+                          , "--normal"                , "#98c379"
+                          , "--high"                  , "red"
+                          , "--low"                   , "lightblue"
+                        ] 18000
+                         
+                      , Run Network "wlo1"
+                        [   "-t"                      , "<fn=3>↓<rx>, ↑<tx></fn>"
+                          , "-L"                      , "0"
+                          , "-H"                      , "32"
+                          , "--normal"                , "#98c379"
+                          , "--high"                  , "#e06c75"
+                          
+                        ] 10
+                        
+                      , Run Cpu
+                        [   "-t"                      , "<fn=1>\xf126</fn> <total>%"      -- \xf108
+                          , "-L"                      , "3"
+                          , "-H"                      , "50"
+                          , "--normal"                , "#98c379"
+                          , "--high"                  , "#e06c75"
+                        ] 10
+
+                      , Run CoreTemp
+                        [   "-t"                      , "<fn=1>\xf166</fn> CoreTemp: <core0>-<core1>-<core2>-<core3>°C"      -- \xf26a
+                          , "-L"                      , "40"
+                          , "-H"                      , "70"
+                          , "--low"                   , "#c0a39a"
+                          , "--normal"                , "#a3a3a3"
+                          , "--high"                  , "#bf4040"
+                        ] 50
+                        
+                      , Run Memory
+                        [ "-t"                        , "<fn=1>\xf16c</fn> <usedratio>%"
+                        ] 10
+                      
+                      , Run Date "%I:%M:%S" "date" 10
+                      
+                      , Run BatteryN   ["BAT0"]
+                        [ "--template"                , "<fn=2>\xf8a0</fn> <acstatus>"
+                          , "--Low"                   , "10"                                  -- units: %
+                          , "--High"                  , "60"                                  -- units: %
+                          , "--"                                                              -- battery specific options
+                          , "-o"                      , "<left>% (<timeleft>)"
+                          , "-O"                      , "AC <left>%"
+                          , "-i"                      , "<left>%"
+                        ] 60 "B0"
+                      
+                      , Run BatteryN   ["BAT1"]
+                        [ "--template"                , "<fn=2>\xf8a3</fn> <acstatus>"
+                          , "--Low"                   , "10"                                  -- units: %
+                          , "--High"                  , "60"                                  -- units: %
+                          , "--"                                                              -- battery specific options
+                          , "-o"                      , "<left>% (<timeleft>)"
+                          , "-O"                      , "AC <left>%"
+                          , "-i"                      , "<left>%"
+                        ] 60 "B1"
+                        
+                       -- Volume indicator
+                      , Run Volume "default" "Master"
+                        [   "-t"                      , "<status>"                            -- "<fn=2>\xe62b</fn><status> <volume>%"
+                           , "--"
+                           , "-o"                     , "<fn=2>\xf026</fn>"
+                           , "-O"                     , "<fn=2>\xf028</fn> <volume>%"
+                           , "-C"                     , "grey"
+                           , "-c"                     , "#666666"
+                        ] 5
+                      , Run StdinReader
+                     ]
+        , sepChar = "%" 
+        , alignSep = "}{"
+        -- , template = " <fn=3>%StdinReader%</fn> }{ %KBOS% | [ %wlp4s0% ] | %cpu% | %memory% * %swap% | %default:Master% | <fc=#d19a66>%date%</fc> "
+        , template = " <fn=3>%StdinReader%</fn> }{ %KBOS% | [ %wlo1% ] | %cpu% | %memory% | %default:Master% | <fc=#d19a66>%date%</fc> "
+        }
+
+    

@@ -1,0 +1,74 @@
+#!/bin/sh
+
+# key bindings
+sxhkd $XDG_CONFIG_HOME/sxhkd/sxhkdrc &
+
+# wallpaper
+# nitrogen --restore &
+
+# set super key to launch rofi
+ksuperkey -e 'Super_L=Alt_L|F1' &
+
+# launch compton
+# al-compositor --start &
+
+# gnome polkit
+# lxpolkit &
+
+
+owncloud &
+
+xss-lock -- i3lock -n -f -c 000000 &
+
+# enable tapping on touchpad
+xinput set-prop 11 285 1 &
+
+wmname LG3D &
+
+
+bspc config border_width    1
+bspc config window_gap      0
+bspc config top_padding     0
+bspc config right_padding   0
+bspc config bottom_padding  0
+bspc config left_padding    0
+bspc config split_ratio          0.5
+bspc config borderless_monocle   false
+bspc config gapless_monocle      true
+bspc config paddingless_monocle  true
+
+bspc config pointer_modifier  mod1
+bspc config click_to_focus    true
+bspc config pointer_action1   move
+bspc config pointer_action2   resize_side
+bspc config pointer_action3   resize_corner
+
+bspc config wm_name LG3D
+
+if xrandr | grep "HDMI2 connected"; then # dual monitor
+    xrandr --output eDP1 --auto --primary --output HDMI2 --auto --right-of eDP1
+    bspc monitor eDP1 -d I II III IV
+    bspc monitor HDMI2 -d V VI VII VIII IX X
+#    bspc rule -a Emacs desktop=^2 state=tiled
+#    bspc rule -a Firefox desktop=^1 state=tiled
+#    bspc rule -a Waterfox desktop=^1 state=tiled
+else
+    xrandr --auto
+    bspc monitor eDP1 -d I II III IV V VI VII VIII IX X
+fi
+
+
+bspc rule -a Zathura state=tiled
+bspc rule -a Emacs desktop=^1 state=tiled
+bspc rule -a Firefox desktop=^5 state=tiled
+bspc rule -a Void_Exit_Session state=floating layer=above
+bspc rule -a Exit_Session state=floating layer=above
+
+
+# ~/.config/pscircle/pscircle.sh &
+
+xrdb ~/.Xresources
+
+hsetroot -fill ~/.wallpaper.jpg &
+
+~/.config/polybar/launch.sh &
