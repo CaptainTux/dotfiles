@@ -108,7 +108,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_w     ), spawn "firefox")
 
     -- lock screen 
-    , ((modm .|. shiftMask, xK_x     ), spawn "i3lock -n -f -i ~/.lock.png & systemctl suspend &")
+    , ((modm .|. shiftMask, xK_x     ), spawn "i3lock -n -f -i ~/.lock.png &")
 
     -- shutdown 
     , ((modm .|. shiftMask, xK_g     ), spawn "shutdown now")
@@ -131,14 +131,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --     	                              \ -hide-scrollbar")
       
     -- launch network manager - using standard dmenu
-    , ((modm,               xK_n     ), spawn "networkmanager_dmenu -fn 'UbuntuMono Nerd Font:size=13' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -p 'networkmanager:'")
+    , ((modm,               xK_n     ), spawn "networkmanager_dmenu -fn 'UbuntuMono Nerd Font:size=14' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -p 'networkmanager:'")
 
     -- launch rofi
     -- , ((modm .|. shiftMask, xK_p     ), spawn "rofi -show run -modi run \
     --     	                              \ -lines 1 -line-margin 0 -line-padding 1 \
     --     	                              \ -separator-style none -font \"mono 11\" -columns 12 -bw 0 \
     --     	                              \ -hide-scrollbar")
-    , ((modm,               xK_p     ), spawn "dmenu_run -fn 'UbuntuMono Nerd Font:size=13' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -l 15 -p 'dmenu:'")
+    , ((modm,               xK_p     ), spawn "dmenu_run -fn 'UbuntuMono Nerd Font:size=14' -nb '#282A36' -nf '#F8F8F2' -sb '#BD93F9' -sf '#282A36' -l 15 -p 'dmenu:'")
     
 
     -- launch filemanager - dmenufm
