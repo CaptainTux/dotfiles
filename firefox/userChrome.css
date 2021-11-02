@@ -1,0 +1,9 @@
+/* remove tabs bar */
+#TabsToolbar {
+  display: none;
+}
+/* remove sidebar header */
+#sidebar-header {
+  display: none;
+}
+
